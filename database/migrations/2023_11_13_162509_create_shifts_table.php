@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('shift_name');
             $table->time('start_time');
             $table->time('end_time');
-            $table->enum('shift_type', ['morning', 'afternoon', 'evening']);
+            $table->unsignedBigInteger('shift_type');
             $table->timestamps();
         });
     }
