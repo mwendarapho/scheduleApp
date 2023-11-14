@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('rosters', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('employee_id');
-            $table->foreignId('shift_id');
+            $table->foreignId('employee_id')->constrained();
+            $table->foreignId('shift_id')->constrained();
             $table->date('date');
             $table->text('notes')->nullable();
             $table->timestamps();

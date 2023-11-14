@@ -4,19 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Roster extends Model
 {
     use HasFactory;
 
-    public function shifts(): HasMany
+    public function shift(): BelongsTo
     {
-        return $this->hasMany(Shifts::class);
+        return $this->belongsTo(Shift::class);
     }
 
-    public function employees(): HasMany
+    public function employee(): BelongsTo
     {
-        return $this->hasMany(Employee::class);
+        return $this->belongsTo(Employee::class);
     }
+
+   
 }
