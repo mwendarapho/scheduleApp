@@ -21,13 +21,17 @@ class ShiftResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('shift_name')
+                    ->label('Shift Name')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('start_time')
+                Forms\Components\TimePicker::make('start_time')
+                    ->label('Start Time')
                     ->required(),
-                Forms\Components\TextInput::make('end_time')
+                Forms\Components\TimePicker::make('end_time')
+                    ->label('End Time')
                     ->required(),
                 Forms\Components\Select::make('shift_type')
+                    ->label('Shift Type')
                     ->options([
                         '1' => 'Morning',
                         '2' => 'Afternoon',
@@ -43,10 +47,14 @@ class ShiftResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('shift_name')
+                    ->label('Shift Name')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('start_time'),
-                Tables\Columns\TextColumn::make('end_time'),
+                Tables\Columns\TextColumn::make('start_time')
+                    ->label('Start Time'),
+                Tables\Columns\TextColumn::make('end_time')
+                    ->label('End Time'),
                 Tables\Columns\TextColumn::make('shift_type')
+                    ->label('Shift Type')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')

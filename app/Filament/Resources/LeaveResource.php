@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LeaveResource\Pages;
+use App\Models\Employee;
 use App\Models\Leave;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -20,15 +21,18 @@ class LeaveResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('employee_id'),
+                Forms\Components\Select::make('employee_id')
+                    ->label('Employee')
+                    ->options(Employee::all()->pluck('first_name','id'))->searchable(),
                 Forms\Components\Select::make('leave_type')
+                    ->label('Leave Type')
                     ->options([
                         'vacation' => 'vacation',
                         'sick_leave' => 'sick_leave',
                         'personal_leave' => 'personal_leave',
                     ]),
-                Forms\Components\DatePicker::make('start_date'),
-                Forms\Components\DatePicker::make('end_date'),
+                Forms\Components\DatePicker::make('start_date')->label('Start Date'),
+                Forms\Components\DatePicker::make('end_date')->label('End Date'),
                 Forms\Components\TextInput::make('reason'),
                 Forms\Components\Select::make('status')
                     ->options([
@@ -44,12 +48,18 @@ class LeaveResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('employee.first_name')->label('First Name'),
-                Tables\Columns\TextColumn::make('employee.last_name')->label('Last Name'),
-                Tables\Columns\TextColumn::make('leave_type'),
-                Tables\Columns\TextColumn::make('start_date')->dateTime(),
-                Tables\Columns\TextColumn::make('end_date')->dateTime(),
-                Tables\Columns\TextColumn::make('reason'),
+                Tables\Columns\TextColumn::make('employee.first_name')
+                    ->label('First Name'),
+                Tables\Columns\TextColumn::make('employee.last_name')
+                    ->label('Last Name'),
+                Tables\Columns\TextColumn::make('leave_type')
+                    ->label('Leave Type'),
+                Tables\Columns\TextColumn::make('start_date')->dateTime()
+                    ->label('Start Date'),
+                Tables\Columns\TextColumn::make('end_date')->dateTime()
+                    ->label('End Date'),
+                Tables\Columns\TextColumn::make('reason')
+                    ->label('Reason'),
                 Tables\Columns\TextColumn::make('status')
                     ->badge()
                     ->color(fn (string $state): string => match ($state) {
