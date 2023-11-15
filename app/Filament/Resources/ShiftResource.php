@@ -26,9 +26,11 @@ class ShiftResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TimePicker::make('start_time')
                     ->label('Start Time')
+                    ->seconds(false)
                     ->required(),
                 Forms\Components\TimePicker::make('end_time')
                     ->label('End Time')
+                    ->seconds(false)
                     ->required(),
                 Forms\Components\Select::make('shift_type')
                     ->label('Shift Type')
