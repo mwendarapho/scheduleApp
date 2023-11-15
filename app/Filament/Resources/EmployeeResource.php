@@ -68,7 +68,8 @@ class EmployeeResource extends Resource
                 Tables\Columns\TextColumn::make('job_title')->label('Job Title')->toggleable(),
             ])
             ->filters([
-                //
+                Tables\Filters\SelectFilter::make('department')
+                    ->options(Employee::all()->pluck('department','department'))
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
