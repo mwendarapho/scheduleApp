@@ -53,7 +53,14 @@ class LeaveResource extends Resource
                 Tables\Columns\TextColumn::make('start_date')->dateTime(),
                 Tables\Columns\TextColumn::make('end_date')->dateTime(),
                 Tables\Columns\TextColumn::make('reason'),
-                Tables\Columns\TextColumn::make('status'),
+                Tables\Columns\TextColumn::make('status')
+                    ->badge()
+                    ->color(fn (string $state): string => match ($state) {
+                        //'pending' => 'gray',
+                        'pending' => 'warning',
+                        'approved' => 'success',
+                        'denied' => 'danger',
+                    }),
 
             ])
             ->filters([
