@@ -32,7 +32,8 @@ class LeaveResource extends Resource
                         'personal_leave' => 'personal_leave',
                     ]),
                 Forms\Components\DatePicker::make('start_date')->label('Start Date'),
-                Forms\Components\DatePicker::make('end_date')->label('End Date'),
+                Forms\Components\DatePicker::make('end_date')->label('End Date')
+                    ->afterOrEqual('start_date'),
                 Forms\Components\TextInput::make('reason'),
                 Forms\Components\Select::make('status')
                     ->options([
