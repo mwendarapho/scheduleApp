@@ -3,10 +3,9 @@
 namespace Database\Seeders;
 
 use Carbon\Carbon;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
-use Faker\Factory as Faker;
 
 class RosterSeeder extends Seeder
 {
@@ -34,8 +33,8 @@ class RosterSeeder extends Seeder
                 'shift_id' => $shiftID,
                 'date' => $date,
                 'notes' => $notes,
-                'created_at'=>Carbon::now(),
-                'updated_at'=>Carbon::now(),
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         }
     }

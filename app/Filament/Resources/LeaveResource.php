@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\LeaveResource\Pages;
-use App\Filament\Resources\LeaveResource\RelationManagers;
 use App\Models\Leave;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class LeaveResource extends Resource
 {
@@ -26,18 +23,18 @@ class LeaveResource extends Resource
                 Forms\Components\TextInput::make('employee_id'),
                 Forms\Components\Select::make('leave_type')
                     ->options([
-                        'vacation'=>'vacation',
-                        'sick_leave'=>'sick_leave',
-                        'personal_leave'=>'personal_leave',
+                        'vacation' => 'vacation',
+                        'sick_leave' => 'sick_leave',
+                        'personal_leave' => 'personal_leave',
                     ]),
                 Forms\Components\DatePicker::make('start_date'),
                 Forms\Components\DatePicker::make('end_date'),
                 Forms\Components\TextInput::make('reason'),
                 Forms\Components\Select::make('status')
                     ->options([
-                        'pending'=>'pending',
-                        'approved'=>'approved',
-                        'denied'=>'denied',
+                        'pending' => 'pending',
+                        'approved' => 'approved',
+                        'denied' => 'denied',
                     ]),
 
             ]);

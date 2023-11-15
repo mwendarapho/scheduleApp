@@ -3,10 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\Employee;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 use Faker\Factory;
+use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder
 {
@@ -16,8 +14,8 @@ class EmployeeSeeder extends Seeder
     public function run(): void
     {
         $faker = Factory::create();
-        
-        for($i=0;$i<=100;$i++){
+
+        for ($i = 0; $i <= 100; $i++) {
             Employee::create([
                 'first_name' => $faker->firstName,
                 'last_name' => $faker->lastName,
@@ -28,30 +26,6 @@ class EmployeeSeeder extends Seeder
                 'job_title' => $faker->jobTitle,
 
             ]);
-        }     
-        /*
-        DB::table('employees')->insert([
-            [
-                'first_name' => 'John',
-                'last_name' => 'Doe',
-                'email' => 'johndoe@example.com',
-                'phone_number' => '123-456-7890',
-                'hire_date' => '2023-01-01',
-                'department' => 'Sales',
-                'job_title' => 'Sales Representative',
-                
-            ],
-            [
-                'first_name' => 'Jane',
-                'last_name' => 'Smith',
-                'email' => 'janesmith@example.com',
-                'phone_number' => '987-654-3210',
-                'hire_date' => '2022-05-15',
-                'department' => 'Customer Support',
-                'job_title' => 'Customer Support Specialist',
-                
-            ]
-        ]);
-        */
+        }
     }
 }
